@@ -7,9 +7,9 @@
 /*
 * function sum ultra large numbers
 * example *
-*    longAdd("num1","num2","num3"...).val;
+*    bt.longSum("num1","num2","num3"...).val;
 */
-function longAdd(...numbers){
+const bt = { longSum : function(...numbers){
 const t1 = new Date();
 
 const number_s = [...numbers];
@@ -61,7 +61,7 @@ let numL = num1.length || num2.length;
  for(let s=numL-1;s>=0;s--){
     h=Number(num1.charAt(s))+Number(num2.charAt(s))+carry;
         ans = '' + h % 10 + ans;
-      carry=(h>=0&&h<=9)?0:(h>=10&&h<=19)?1:'';
+      carry=(h-(h%10))/10;
       if(numL-s===_aL){ ans = '.' + ans; };
       if(s===0){if(carry!==0){
       ans = '' + carry + ans;}};
@@ -82,5 +82,9 @@ let numL = num1.length || num2.length;
  };
 const t2 = new Date();
  return { val : answer, time : (t2-t1)/1000 };
-};
+     }
 
+
+
+
+  };
